@@ -1,0 +1,546 @@
+<!DOCTYPE html><html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Muthuraj • Portfolio</title>
+
+  <meta name="description" content="Personal portfolio of Muthuraj — projects, skills, and contact info."/>
+
+  <meta name="color-scheme" content="light dark" />
+
+  <style>
+
+    /* ===== CSS RESET (trimmed) ===== */
+
+    *,*::before,*::after{box-sizing:border-box}
+
+    html,body{margin:0;padding:0}
+
+    img{max-width:100%;display:block}
+
+    a{color:inherit}
+
+    :root{
+
+      --bg: #0f172a;           /* slate-900 */
+
+      --bg-soft: #111827;      /* gray-900 */
+
+      --fg: #e5e7eb;           /* gray-200 */
+
+      --muted: #9ca3af;        /* gray-400 */
+
+      --brand: #38bdf8;        /* sky-400 */
+
+      --brand-2: #a78bfa;      /* violet-400 */
+
+      --card: #111827a6;
+
+      --ring: #22d3ee;         /* cyan-400 */
+
+      --shadow: 0 10px 30px rgba(0,0,0,.35)
+
+    }
+
+    @media (prefers-color-scheme: light){
+
+      :root{--bg:#f8fafc;--bg-soft:#ffffff;--fg:#0f172a;--muted:#475569;--card:#ffffffcc;--shadow:0 12px 28px rgba(2,6,23,.08)}
+
+    }
+
+    body{
+
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+
+      color: var(--fg); background: radial-gradient(1200px 800px at 100% -10%, rgba(56,189,248,.15), transparent 60%),
+
+                radial-gradient(1000px 600px at -10% 10%, rgba(167,139,250,.18), transparent 60%),
+
+                var(--bg);
+
+      line-height: 1.6;
+
+    }
+
+    .container{width:min(1100px, 92%);margin-inline:auto}
+
+    .nav{position:sticky;top:0;backdrop-filter:saturate(140%) blur(10px);background:linear-gradient(180deg, rgba(17,24,39,.75), rgba(17,24,39,.25));
+
+      border-bottom:1px solid rgba(148,163,184,.15);z-index:50}
+
+    @media (prefers-color-scheme: light){.nav{background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.4));}}
+
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+
+    .logo{font-weight:800;letter-spacing:.4px}
+
+    .pill{display:inline-flex;gap:.6rem;align-items:center;border:1px solid rgba(148,163,184,.35);padding:8px 12px;border-radius:999px;background:var(--card);box-shadow:var(--shadow)}
+
+    .pill a{padding:.25rem .6rem;border-radius:999px;text-decoration:none;border:1px solid transparent}
+
+    .pill a:hover{border-color:rgba(148,163,184,.6)}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:64px 0}
+
+    .hero h1{font-size:clamp(2rem, 5vw, 3rem);line-height:1.15;margin:0 0 .6rem}
+
+    .hero p{color:var(--muted);margin:.25rem 0 1rem}
+
+    .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+
+    .btn{appearance:none;border:1px solid transparent;border-radius:14px;padding:.8rem 1rem;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
+
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:white}
+
+    .btn-outline{background:var(--card);border-color:rgba(148,163,184,.35)}
+
+    .avatar-wrap{position:relative}
+
+    .avatar{width:220px;height:220px;border-radius:24px;object-fit:cover;border:2px solid rgba(148,163,184,.35);box-shadow:var(--shadow)}
+
+    .badge{position:absolute;bottom:-10px;left:-10px;background:var(--bg-soft);border:1px solid rgba(148,163,184,.35);padding:.5rem .7rem;border-radius:12px;font-size:.85rem;box-shadow:var(--shadow)}.section{padding:40px 0}
+
+.section h2{font-size:1.6rem;margin:0 0 1rem}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+
+@media (max-width: 900px){.hero{grid-template-columns:1fr;}.avatar{width:180px;height:180px}.card-grid{grid-template-columns:1fr 1fr}}
+
+@media (max-width: 640px){.card-grid{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid rgba(148,163,184,.3);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+
+.card img{aspect-ratio:16/9;object-fit:cover}
+
+.card .content{padding:1rem}
+
+.chip{display:inline-block;border:1px solid rgba(148,163,184,.4);padding:.2rem .5rem;border-radius:999px;font-size:.75rem;margin:.2rem .3rem .2rem 0}
+
+.list{display:grid;gap:.6rem}
+
+.list li{display:flex;gap:.6rem;align-items:flex-start}
+
+.list li span{flex:0 0 10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--brand),var(--brand-2));margin-top:.45rem}
+
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:1.2rem}
+
+@media (max-width: 900px){.split{grid-template-columns:1fr}}
+
+.input, textarea{width:100%;padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(148,163,184,.35);background:var(--bg-soft);color:var(--fg)}
+
+@media (prefers-color-scheme: light){.input, textarea{background:#fff}}
+
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+
+@media (max-width:640px){form .row{grid-template-columns:1fr}}
+
+.footer{padding:24px 0;border-top:1px solid rgba(148,163,184,.25);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted)}
+
+.float-tools{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:10px}
+
+.fab{border:none;border-radius:999px;padding:.8rem;background:var(--bg-soft);border:1px solid rgba(148,163,184,.35);cursor:pointer;box-shadow:var(--shadow)}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+
+  <nav class="nav">
+
+    <div class="container nav-inner">
+
+      <div class="logo">👋🏽 Muthuraj</div>
+
+      <div class="pill" role="navigation" aria-label="Main">
+
+        <a href="#about">About</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#contact">Contact</a>
+
+        <button id="themeBtn" class="fab" title="Toggle theme" aria-label="Toggle theme">🌓</button>
+
+      </div>
+
+    </div>
+
+  </nav>  <!-- ===== HERO ===== -->  <header class="container hero" id="home">
+
+    <div>
+
+      <h1>Hi, I'm <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Muthuraj</span> —  java Project</h1>
+
+      <p>I build clean, responsive websites and delightful UI with HTML, CSS, and JavaScript.
+
+      </p>
+
+      <div class="cta">
+
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+
+        <a class="btn btn-outline" href="#contact">Contact Me</a>
+
+        <button id="downloadBtn" class="btn btn-outline" type="button">Download as PDF</button>
+
+      </div>
+
+      <ul class="list" style="margin-top:1rem"
+      </ul>
+
+    </div>
+
+    <div class="avatar-wrap">
+
+      <!-- Replace the image below with your actual photo file name -->
+
+  </header>  <!-- ===== ABOUT ===== -->  <section class="container section" id="about">
+
+    <h2>About</h2>
+
+    <div class="split">
+
+      <div>
+
+        <p>
+
+          I'm a front‑end enthusiast who enjoys turning ideas into interactive experiences.
+
+          I focus on semantic HTML, modern CSS, and accessible JavaScript.
+
+        </p>
+
+        <p>
+
+          Outside of coding, I enjoy design systems, motion graphics, and teaching others what I've learned.
+
+        </p>
+
+      </div>
+
+      <div class="card" style="padding:1rem">
+
+        <strong>Quick Info</strong>
+
+        <ul class="list" style="margin-top:.6rem">
+          <li><span></span>Email: <a href="mailto:you@example.com">you@example.com</a></li>
+
+          <li><span></span>GitHub: <a href="https://github.com/yourhandle" target="_blank" rel="noreferrer">@yourhandle</a></li>
+
+          <li><span></span>LinkedIn: <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer">yourhandle</a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>  <!-- ===== SKILLS ===== -->  <section class="container section" id="skills">
+
+    <h2>Skills</h2>
+
+    <div class="card" style="padding:1rem">
+
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+
+        <span class="chip">HTML5</span>
+
+        <span class="chip">CSS3 / Flexbox / Grid</span>
+
+        <span class="chip">Responsive Design</span>
+
+        <span class="chip">JavaScript (ES6+)</span>
+
+        <span class="chip">Accessibility (a11y)</span>
+
+        <span class="chip">Git & GitHub</span>
+
+        <span class="chip">Figma</span>
+
+      </div>
+
+    </div>
+
+  </section>  <!-- ===== PROJECTS ===== -->  <section class="container section" id="projects">
+
+    <h2>Projects</h2>
+
+    <div class="card-grid">
+
+      <article class="card">
+
+        <div class="content">
+
+          <h3>Project 1</h3>
+
+          <p>Career Information Management System java project.</p>
+
+          <div>
+
+            <span class="chip">HTML</span>
+
+            <span class="chip">CSS </span>
+
+            <span class="chip">JavaScript</span>
+
+          </div>
+
+          <p><a href="#" target="_blank" rel="noreferrer">Live Demo</a> · <a href="#" target="_blank" rel="noreferrer">Source</a></p>
+
+        </div>
+
+      </article>
+
+      <article class="card">
+
+        
+
+        <div class="content">
+
+          <h3>Project 2</h3>
+
+          <p>Course Management System java project.</p>
+
+          <div>
+
+            <span class="chip">HTML</span>
+
+            <span class="chip">CSS</span>
+
+            <span class="chip">JS</span>
+
+          </div>
+
+          <p><a href="#" target="_blank" rel="noreferrer">Live Demo</a> · <a href="#" target="_blank" rel="noreferrer">Source</a></p>
+
+        </div>
+
+      </article>
+
+      <article class="card">
+
+        
+
+        <div class="content">
+
+          <h3>Project 3</h3>
+
+          <p>Web Server Management System java project.</p>
+
+          <div>
+
+            <span class="chip">JavaScript</span>
+
+            <span class="chip">LocalStorage</span>
+
+            <span class="chip">SPA</span>
+
+          </div>
+
+          <p><a href="#" target="_blank" rel="noreferrer">Live Demo</a> · <a href="#" target="_blank" rel="noreferrer">Source</a></p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>  <!-- ===== CONTACT ===== -->  <section class="container section" id="contact">
+
+    <h2>Contact</h2>
+
+    <div class="split">
+
+      <form id="contactForm" class="card" style="padding:1rem" novalidate>
+
+        <div class="row">
+
+          <div>
+
+            <label class="sr-only" for="name">Name</label>
+
+            <input class="input" id="name" name="name" type="text" placeholder="Your name" required />
+
+          </div>
+
+          <div>
+
+            <label class="sr-only" for="email">Email</label>
+
+            <input class="input" id="email" name="email" type="email" placeholder="Email address" required />
+
+          </div>
+
+        </div>
+
+        <div style="margin-top:.8rem">
+
+          <label class="sr-only" for="message">Message</label>
+
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project" required></textarea>
+
+        </div>
+
+        <div style="display:flex;gap:.6rem;margin-top:.8rem;align-items:center">
+
+          <button class="btn btn-primary" type="submit">Send</button>
+
+          <span id="formStatus" aria-live="polite" style="font-size:.9rem;color:var(--muted)"></span>
+
+        </div>
+
+      </form><div class="card" style="padding:1rem">
+    </ul>
+
+  </div>
+
+</div>
+
+  </section>  <!-- ===== FOOTER ===== -->  <footer class="container footer">
+
+    <span>© <span id="year"></span> Muthuraj</span>
+
+    <span>Built with ❤ using HTML • CSS • JS</span>
+
+  </footer>  <!-- ===== FLOATING TOOLS ===== -->  <div class="float-tools">
+
+    <button id="toTop" class="fab" title="Back to top" aria-label="Back to top">⬆️</button>
+
+  </div>  <script>
+
+    // Smooth scroll for in-page links
+
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+
+      a.addEventListener('click', e=>{
+
+        const id = a.getAttribute('href');
+
+        if(id.length > 1){
+
+          e.preventDefault();
+
+          document.querySelector(id).scrollIntoView({behavior:'smooth'});
+
+        }
+
+      })
+
+    })
+
+    // Theme toggle (persist)
+
+    const themeBtn = document.getElementById('themeBtn');
+
+    const setTheme = (mode)=>{
+
+      if(mode==='light'){document.documentElement.style.colorScheme='light';localStorage.setItem('theme','light')}
+
+      else if(mode==='dark'){document.documentElement.style.colorScheme='dark';localStorage.setItem('theme','dark')}
+
+      else{document.documentElement.style.colorScheme='normal';localStorage.removeItem('theme')}
+
+    }
+
+    const saved = localStorage.getItem('theme');
+
+    if(saved) setTheme(saved);
+
+    themeBtn.addEventListener('click', ()=>{
+
+      const cur = localStorage.getItem('theme');
+
+      setTheme(cur==='light' ? 'dark' : 'light');
+
+    })
+
+    // Back to top
+
+    document.getElementById('toTop').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // Current year
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contact form (demo only)
+
+    const form = document.getElementById('contactForm');
+
+    const statusEl = document.getElementById('formStatus');
+
+    form.addEventListener('submit', e=>{
+
+      e.preventDefault();
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      if(!data.name || !data.email || !data.message){
+
+        statusEl.textContent = 'Please fill out all fields.';
+
+        return;
+
+      }
+
+      // Fake delay
+
+      statusEl.textContent = 'Sending…';
+
+      setTimeout(()=>{
+
+        statusEl.textContent = 'Thanks! I will reply soon.';
+
+        form.reset();
+
+      }, 700);
+
+    })
+
+    // Download as PDF using browser print dialog
+
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+
+      window.print();
+
+    });
+
+    // Optional: observe cards for a subtle reveal animation
+
+    const io = new IntersectionObserver((entries)=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          entry.target.animate([
+
+            {opacity:0, transform:'translateY(10px) scale(.98)'},
+
+            {opacity:1, transform:'translateY(0) scale(1)'}
+
+          ], {duration:450, easing:'cubic-bezier(.2,.75,.25,1)', fill:'both'});
+
+          io.unobserve(entry.target);
+
+        }
+
+      })
+
+    }, {threshold:.15});
+
+    document.querySelectorAll('.card').forEach(el=>io.observe(el));
+
+  </script></body>
+
+</html>
